@@ -2,50 +2,72 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Column           | Type    | Options     |
+| ---------------- | ------- | ----------- |
+| nickname         | string  | null: false |
+| email            | string  | null: false |
+| password         | string  | null: false |
+| family_name      | string  | null: false |
+| first_name       | string  | null: false |
+| family_name_kana | string  | null: false |
+| first_name_kana  | string  | null: false |
+| birthday_year    | integer | null: false |
+| birthday_month   | integer | null: false |
+| birthday_day     | integer | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_one :user_profile
-
-## user_profiles テーブル
-
-| Column      | Type       | Options                      |
-| ----------- | ---------- | ---------------------------- |
-| family_name | string     | null: false                  |
-| first_name  | string     | null: false                  |
-| birthday    | integer    | null: false                  |
-| user        | references | null:false foreign_key: true |
-
-### Association
-
-- belongs_to :user
 
 ## items テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | item_name       | string     | null: false                    |
-| image           | string     | null: false                    |
 | item_explain    | text       | null: false                    |
 | price           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
-| category        | references | null: false, foreign_key: true |
-| condition       | references | null: false, foreign_key: true |
-| shopping_change | references | null: false, foreign_key: true |
-| current_place   | references | null: false, foreign_key: true |
-| send_day        | references | null: false, foreign_key: true |
+| category        | integer    | null: false, foreign_key: true |
+| condition       | integer    | null: false, foreign_key: true |
+| shopping_change | integer    | null: false, foreign_key: true |
+| current_place   | integer    | null: false, foreign_key: true |
+| send_day        | integer    | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
+- has_one :shopping_address
+- has_one :card
+
+## shopping_addresses テーブル
+
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| post_number   | integer | null: false |
+| prefecture    | integer | null: false |
+| city          | string  | null: false |
+| street_number | string  | null: false |
+| build_name    | string  |             |
+| phone_number  | integer | null: false |
+
+### Association
+
+- belongs_to :item
+
+## cards テーブル
+
+| Column                | Type    | Options     |
+| --------------------- | ------- | ----------- |
+| card_number           | integer | null, false |
+| expiration_date_month | integer | null: false |
+| expiration_date_day   | integer | null: false |
+| security_number       | integer | null: false |
+
+### Association
+
+- belongs_to :item
 
 ## comments テーブル
 
