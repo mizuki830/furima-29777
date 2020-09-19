@@ -19,6 +19,7 @@
 
 - has_many :items
 - has_many :comments
+- has_many :shoppings
 
 ## items テーブル
 
@@ -38,32 +39,31 @@
 
 - belongs_to :user
 - has_many :comments
+- has_one :shopping
 - has_one :shopping_address
-- has_one :card
+
+## shoppings テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
 
 ## shopping_addresses テーブル
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
-| post_number   | integer | null: false |
+| post_number   | string  | null: false |
 | prefecture    | integer | null: false |
 | city          | string  | null: false |
 | street_number | string  | null: false |
 | build_name    | string  |             |
-| phone_number  | integer | null: false |
-
-### Association
-
-- belongs_to :item
-
-## cards テーブル
-
-| Column                | Type    | Options     |
-| --------------------- | ------- | ----------- |
-| card_number           | integer | null, false |
-| expiration_date_month | integer | null: false |
-| expiration_date_day   | integer | null: false |
-| security_number       | integer | null: false |
+| phone_number  | string  | null: false |
 
 ### Association
 
