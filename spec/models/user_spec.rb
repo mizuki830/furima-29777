@@ -1,8 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  discribe 'ユーザー新規登録' do
+  before do
+    @user = FactoryBot.build(:user)
+  end
+
+  context 'ユーザー新規登録ができないとき' do
     it 'ニックネームが空だと登録できない' do
+      @user.nickname = ""
+      @user.valid?
+      binding.pry
     end
   
     it 'メールアドレスが空だと登録できない' do
@@ -27,7 +34,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  discribe '本人情報確認' do
+  context '本人情報確認' do
     it 'ユーザー本名が苗字と名前それぞれ空だと登録できない' do
     end
 
