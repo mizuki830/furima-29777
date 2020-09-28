@@ -4,13 +4,14 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.text :explain, null: false
       t.integer :price, null: false
-      t.integer :category, null: false
-      t.integer :condition, null: false
-      t.integer :shopping_change, null: false
-      t.integer :current_place, null: false
-      t.integer :send_day, null: false
+      t.integer :category_id, null: false
+      t.integer :condition_id, null: false
+      t.integer :shopping_change_id, null: false
+      t.integer :current_place_id, null: false
+      t.integer :send_day_id, null: false
       t.references :user, null: false, foreign_key: true
       t.timestamps
+      # アクティブハッシュに対して_id
     end
   end
 end
