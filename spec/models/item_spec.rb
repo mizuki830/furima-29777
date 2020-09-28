@@ -31,7 +31,7 @@ RSpec.describe Item, type: :model do
       it 'category_idが１だと登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it 'condition_idが空では登録できない' do
         @item.condition_id = ''
@@ -41,7 +41,7 @@ RSpec.describe Item, type: :model do
       it 'condition_idが１だと登録できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
       end
       it 'shopping_change_idが空では登録できない' do
         @item.shopping_change_id = ''
@@ -51,7 +51,7 @@ RSpec.describe Item, type: :model do
       it 'shopping_change_idが１だと登録できない' do
         @item.shopping_change_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shopping change must be other than 1")
+        expect(@item.errors.full_messages).to include('Shopping change must be other than 1')
       end
       it 'current_place_idが空では登録できない' do
         @item.current_place_id = ''
@@ -61,7 +61,7 @@ RSpec.describe Item, type: :model do
       it 'current_place_idが１だと登録できない' do
         @item.current_place_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Current place must be other than 1")
+        expect(@item.errors.full_messages).to include('Current place must be other than 1')
       end
       it 'send_day_idが空では登録できない' do
         @item.send_day_id = ''
@@ -71,7 +71,7 @@ RSpec.describe Item, type: :model do
       it 'send_day_idが１だと登録できない' do
         @item.send_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Send day must be other than 1")
+        expect(@item.errors.full_messages).to include('Send day must be other than 1')
       end
       it 'priceが空では登録できない' do
         @item.price = ''
@@ -84,7 +84,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
       it '価格の範囲が、¥10,000,000であること' do
-        @item.price = 10,000,000
+        @item.price = 10, 0o00, 0o00
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
