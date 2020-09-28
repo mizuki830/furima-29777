@@ -11,7 +11,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :send_day_id, null: false
       t.references :user, null: false, foreign_key: true
       t.timestamps
-      # アクティブハッシュに対して_id
     end
   end
 end

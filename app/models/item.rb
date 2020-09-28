@@ -17,7 +17,6 @@ class Item < ApplicationRecord
     validates :shopping_change_id, numericality: { other_than: 1 }
     validates :current_place_id, numericality: { other_than: 1 }
     validates :send_day_id, numericality: { other_than: 1 }
-    validates :price, format: { with: /\A[0-9]+\z/ }, inclusion: {in: 300..9999999}
-    # viewとmodelのところでアクティブハッシュに対して_id
+    validates :price, format: { with: /\A[0-9]+\z/ }, inclusion: { in: 300..9_999_999 }
   end
 end

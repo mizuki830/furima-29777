@@ -1,12 +1,10 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.order("created_at DESC")
+    @items = Item.order('created_at DESC')
   end
 
   def new
-    unless user_signed_in?
-      redirect_to user_session_path
-    end
+    redirect_to user_session_path unless user_signed_in?
     @item = Item.new
   end
 
