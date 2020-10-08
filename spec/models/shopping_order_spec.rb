@@ -21,7 +21,7 @@ RSpec.describe ShoppingOrder, type: :model do
       it '郵便番号に-がないと登録できない' do
         @shopping.post_number = '1234567'
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include ("Post number is invalid")
+        expect(@shopping.errors.full_messages).to include('Post number is invalid')
       end
       it 'current_place_idが空では登録できない' do
         @shopping.current_place_id = ''
@@ -31,7 +31,7 @@ RSpec.describe ShoppingOrder, type: :model do
       it 'current_place_idが１だと登録できない' do
         @shopping.current_place_id = 1
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include("Current place must be other than 1")
+        expect(@shopping.errors.full_messages).to include('Current place must be other than 1')
       end
       it 'cityが空では登録できない' do
         @shopping.city = ''
@@ -51,12 +51,12 @@ RSpec.describe ShoppingOrder, type: :model do
       it 'phone_numberに-があると登録できない' do
         @shopping.phone_number = '090-123-456'
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include ("Phone number is invalid")
+        expect(@shopping.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが12桁以上だと登録できない' do
         @shopping.phone_number = '012345678912345'
         @shopping.valid?
-        expect(@shopping.errors.full_messages).to include ("Phone number is invalid")
+        expect(@shopping.errors.full_messages).to include('Phone number is invalid')
       end
       it 'tokenが空だと登録できない' do
         @shopping.token = ''

@@ -1,13 +1,10 @@
 class OrdersController < ApplicationController
-
   before_action :choice_item, only: [:index, :create]
 
   def index
     @shopping = ShoppingOrder.new
     if user_signed_in?
-      if current_user.id == @item.user_id || @item.shopping != nil
-        redirect_to root_path
-      end
+      redirect_to root_path if current_user.id == @item.user_id || !@item.shopping.nil?
     else
       redirect_to user_session_path
     end
@@ -31,11 +28,11 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: @item.price,  # 商品の値段
-      card: shopping_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類(日本円)
+      amount: @item.price, # 商品の値段
+      card: shopping_params[:token], # カードトークン
+      currency: 'jpy'                 # 通貨の種類(日本円)
     )
   end
 
