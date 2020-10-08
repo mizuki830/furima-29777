@@ -2,13 +2,13 @@ class ShoppingOrder
 
   include ActiveModel::Model
   attr_accessor :post_number, :current_place_id, :city, :street_number, :build_name, :phone_number, :token, :item_id, :user_id
-
   with_options presence: true do
     validates :post_number, format: { with: /\A\d{3}[-]\d{4}\z/ }
-    validates :current_place_id
+    validates :current_place_id, numericality: { other_than: 1 }
     validates :city
     validates :street_number
     validates :phone_number, format: { with: /\A\d{1,11}\z/ }
+    validates :token
   end
 
   def save

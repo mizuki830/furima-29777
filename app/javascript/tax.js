@@ -10,4 +10,4 @@ function tax() {
     profit.innerHTML = itemPrice - price;
   };
 }
-window.addEventListener("turbolinks:load", tax)
+window.addEventListener("load", tax)
