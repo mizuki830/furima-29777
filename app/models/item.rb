@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :send_day
 
   with_options presence: true do
+    validates :image
     validates :name, length: { maximum: 40 }
     validates :explain, length: { maximum: 1000 }
     validates :category_id, numericality: { other_than: 1 }
